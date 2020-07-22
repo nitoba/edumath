@@ -12,25 +12,16 @@ abstract class _LoginControllerBase with Store {
 
   _LoginControllerBase(this.loginWithGoogle, this.getUserLogged);
 
-  login() async {
-    final result = await loginWithGoogle();
-    if (result == null) return;
-    print(result.userId);
-    print(result.userName);
-    print(result.userPhoto);
-  }
-
   UserEntity user;
 
-  getUser() async {
+  login() async {
+    user = await loginWithGoogle();
+  }
+
+  Future<void> getUser() async {
     final result = await getUserLogged();
     if (result.isLeft()) return;
     result.fold((l) => l, (r) => user = r);
-
-    print(user.userId);
-    print(user.userName);
-    print(user.userPhoto);
-
-    //Modular.to.pushNamed("/home");
+    //Modular.to.pushReplacementNamed("/home", arguments: user);
   }
 }
