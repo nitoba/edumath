@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1039484760271",
+    "firebase_url": "https://edumath-2c069.firebaseio.com",
+    "project_id": "edumath-2c069",
+    "storage_bucket": "edumath-2c069.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039484760271:android:d268e0eeb45995d49b07ba",
+        "android_client_info": {
+          "package_name": "nito.ba.edumath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039484760271-sv87uv32mrs8rb146iq75s55un9116eg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nito.ba.edumath",
+            "certificate_hash": "cedf762cd023317cc109d15d000be08e8000765e"
+          }
+        },
+        {
+          "client_id": "1039484760271-2f3aq67bo2tm2cfc3tt6gok95njbpuja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvlLcxp6SLRX9z367kVEsKRlt0Hg7Q_XQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039484760271-2f3aq67bo2tm2cfc3tt6gok95njbpuja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
