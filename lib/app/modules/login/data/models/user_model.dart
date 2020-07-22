@@ -6,12 +6,10 @@ class UserModel extends UserEntity {
   UserModel({
     @required userId,
     @required userName,
-    @required userEmail,
     @required userPhoto,
   }) : super(
           userId: userId,
           userName: userName,
-          userEmail: userEmail,
           userPhoto: userPhoto,
         );
 
@@ -19,7 +17,6 @@ class UserModel extends UserEntity {
     return UserModel(
       userId: firebaseUser.uid,
       userName: firebaseUser.displayName,
-      userEmail: firebaseUser.email,
       userPhoto: firebaseUser.photoUrl,
     );
   }

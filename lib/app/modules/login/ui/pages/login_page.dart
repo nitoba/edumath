@@ -15,7 +15,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   void initState() {
-    //controller.getUser();
+    controller.getUser();
     super.initState();
   }
 
@@ -23,12 +23,21 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title:
+            Text(widget.title, style: TextStyle(fontWeight: FontWeight.w700)),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[
+            Text("Font - Poppins", style: TextStyle(fontSize: 25)),
+            RaisedButton(
+                child: Text(
+                  "Logar",
+                  //style: TextStyle(),
+                ),
+                onPressed: controller.login),
+          ],
         ),
       ),
     );

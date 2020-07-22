@@ -9,11 +9,6 @@ class LoginRepositoryMock extends Mock implements ILoginRepository {}
 final user = UserEntity(
   userId: "asdhkj87as",
   userName: "Bruno Alves",
-  userEmail: "brukum2@gmail.com",
-  userMetrics: {
-    "correctanwers": {},
-    "incorrectanwers": {},
-  },
 );
 
 void main() {

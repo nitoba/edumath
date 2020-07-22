@@ -1,8 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:edumath/app/modules/login/domain/entities/user_entity.dart';
 import 'package:edumath/app/modules/login/domain/repositories/i_login_repository.dart';
 
 abstract class IGetUserLogged {
-  Future<UserEntity> call();
+  Future<Either<bool, UserEntity>> call();
 }
 
 class GetUserLogged implements IGetUserLogged {
@@ -11,8 +12,7 @@ class GetUserLogged implements IGetUserLogged {
   GetUserLogged(this.loginRepository);
 
   @override
-  Future<UserEntity> call() async {
-    final UserEntity userIsLogged = await loginRepository.getUserLogged();
-    return userIsLogged;
+  Future<Either<bool, UserEntity>> call() async {
+    return await loginRepository.getUserLogged();
   }
 }

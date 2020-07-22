@@ -5,6 +5,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:edumath/app/app_widget.dart';
 
+import 'modules/home/home_module.dart';
+
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
@@ -14,6 +16,7 @@ class AppModule extends MainModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, module: LoginModule()),
+        Router("/home", module: HomeModule()),
       ];
 
   @override
