@@ -1,0 +1,43 @@
+import 'package:edumath/app/modules/login/domain/entities/user_entity.dart';
+import 'package:edumath/app/modules/login/domain/repositories/i_login_repository.dart';
+import 'package:edumath/app/modules/login/domain/usecases/get_user_logged.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+
+class LoginRepositoryMock extends Mock implements ILoginRepository {}
+
+final user = UserEntity(
+  userId: "asdhkj87as",
+  userName: "Bruno Alves",
+  userEmail: "brukum2@gmail.com",
+  userMetrics: {
+    "correctanwers": {},
+    "incorrectanwers": {},
+  },
+);
+void main() {
+  ILoginRepository repository;
+  GetUserLogged getUserLogged;
+  setUp(() {
+    repository = LoginRepositoryMock();
+    getUserLogged = GetUserLogged(repository);
+  });
+
+  test('should be return an user if he already logged', () async {
+    when(repository.getUserLogged()).thenAnswer((_) async => user);
+
+    final result = await getUserLogged();
+
+    expect(result, user);
+    verify(repository.getUserLogged());
+  });
+
+  test('should be return null if user is not logged', () async {
+    when(repository.getUserLogged()).thenAnswer((_) async => null);
+
+    final result = await getUserLogged();
+
+    expect(result, null);
+    verify(repository.getUserLogged());
+  });
+}
