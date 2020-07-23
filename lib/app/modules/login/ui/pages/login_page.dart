@@ -1,9 +1,9 @@
-import 'package:edumath/app/core/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
+import '../../../../core/constants.dart';
 import '../controllers/login_controller.dart';
 
 class LoginPage extends StatefulWidget {

@@ -1,6 +1,7 @@
-import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'home_page.dart';
+
+import 'ui/controllers/home_controller.dart';
+import 'ui/pages/home_page.dart';
 
 class HomeModule extends ChildModule {
   @override

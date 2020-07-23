@@ -1,6 +1,7 @@
-import 'package:edumath/app/modules/login/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../models/user_model.dart';
 
 abstract class ILoginWithFirebase {
   Future<UserModel> handleSingIn();

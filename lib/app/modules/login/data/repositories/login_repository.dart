@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:edumath/app/modules/login/data/datasource/google_login_firebase.dart';
-import 'package:edumath/app/modules/login/domain/entities/user_entity.dart';
-import 'package:edumath/app/modules/login/domain/repositories/i_login_repository.dart';
+
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/i_login_repository.dart';
+import '../datasource/google_login_firebase.dart';
 
 class LoginRepository implements ILoginRepository {
   final ILoginWithFirebase loginWithFirebase;

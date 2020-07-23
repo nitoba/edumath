@@ -1,7 +1,8 @@
-import 'package:edumath/app/modules/login/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'home_controller.dart';
+
+import '../../../login/domain/entities/user_entity.dart';
+import '../controllers/home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final UserEntity user;
