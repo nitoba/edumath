@@ -1,3 +1,5 @@
+import 'package:edumath/app/modules/login/data/datasource/google_login_firebase.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';
@@ -11,5 +13,11 @@ abstract class _HomeControllerBase with Store {
   @action
   void increment() {
     value++;
+  }
+
+  logout() async {
+    final login = LoginWithFirebase();
+    await login.logout();
+    Modular.to.pushNamedAndRemoveUntil('/', (_) => false);
   }
 }

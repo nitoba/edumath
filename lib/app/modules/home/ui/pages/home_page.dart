@@ -22,7 +22,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         title: Text(widget.user.userName),
       ),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          MaterialButton(
+            child: Text("logout"),
+            onPressed: controller.logout,
+          )
+        ],
       ),
     );
   }

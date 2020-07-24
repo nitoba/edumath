@@ -18,9 +18,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   void initState() {
-    controller.getUser().whenComplete(() {
-      Modular.to.pushReplacementNamed("/home", arguments: controller.user);
-    });
+    controller.getUser();
     super.initState();
   }
 
@@ -99,10 +97,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                   ),
                 ],
               ),
-              onPressed: () async {
-                await controller.login();
-                Modular.to
-                    .pushReplacementNamed("/home", arguments: controller.user);
+              onPressed: () {
+                controller.login();
               }),
           Spacer(),
           SvgPicture.asset("assets/images/pi.svg"),
