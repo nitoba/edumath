@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/constants.dart';
@@ -22,6 +23,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   void initState() {
     controller.getUserMetrics(widget.user.userId);
+    controller.getAllCagetories();
     super.initState();
   }
 
@@ -56,21 +58,30 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               ),
               SizedBox(height: 25),
               Expanded(
-                child: GridView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: 6,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 22,
-                    mainAxisSpacing: 20,
-                  ),
-                  itemBuilder: (contenxt, index) {
-                    return CategorieTileWidget(
-                      title: "Trigonometria",
-                      onTap: () {},
+                child: Observer(builder: (_) {
+                  if (controller.categories != null) {
+                    return GridView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: controller.categories.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 22,
+                        mainAxisSpacing: 20,
+                      ),
+                      itemBuilder: (contenxt, index) {
+                        return CategorieTileWidget(
+                          title: controller.categories[index].title,
+                          onTap: () {},
+                        );
+                      },
                     );
-                  },
-                ),
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  );
+                }),
               )
             ],
           ),

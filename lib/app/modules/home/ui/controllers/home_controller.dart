@@ -1,10 +1,10 @@
-import 'package:edumath/app/modules/home/domain/entities/categories_entity.dart';
-import 'package:edumath/app/modules/home/domain/entities/general_user_metrics_entity.dart';
-import 'package:edumath/app/modules/home/domain/usecases/get_categories.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../login/data/datasource/google_login_firebase.dart';
+import '../../domain/entities/categories_entity.dart';
+import '../../domain/entities/general_user_metrics_entity.dart';
+import '../../domain/usecases/get_categories.dart';
 import '../../domain/usecases/get_user_general_metrics.dart';
 
 part 'home_controller.g.dart';
