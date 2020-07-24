@@ -71,7 +71,7 @@ class GeneralUserMetricsWidget extends StatelessWidget {
                         Icon(Feather.x, color: Colors.white, size: 28),
                         SizedBox(width: 8),
                         Text(
-                          "${homeController.generalUserMetricsEntity.correctAnwers}",
+                          "${homeController.generalUserMetricsEntity.incorrectAnwers}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
