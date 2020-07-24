@@ -2,7 +2,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'data/datasource/get_general_metrics.dart';
 import 'data/repositories/home_repository.dart';
-import 'domain/repositories/i_home_repository.dart';
 import 'domain/usecases/get_user_general_metrics.dart';
 import 'ui/controllers/home_controller.dart';
 import 'ui/pages/home_page.dart';
