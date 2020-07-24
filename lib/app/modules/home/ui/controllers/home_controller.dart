@@ -7,6 +7,7 @@ import '../../domain/usecases/get_user_general_metrics.dart';
 
 part 'home_controller.g.dart';
 
+@Injectable()
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {

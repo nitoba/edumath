@@ -1,9 +1,14 @@
 import 'package:edumath/app/modules/home/data/datasource/get_general_metrics.dart';
 import 'package:edumath/app/modules/home/data/models/general_user_metrics_model.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular_annotations.dart';
 
 import '../../domain/entities/general_user_metrics_entity.dart';
 import '../../domain/repositories/i_home_repository.dart';
 
+part 'home_repository.g.dart';
+
+@Injectable()
 class HomeRepository implements IHomeRepository {
   final IGetGeneralMetricsFirestore generalMetricsFirestore;
 

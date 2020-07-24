@@ -10,13 +10,17 @@ import 'ui/pages/home_page.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => HomeController(i<IGetUserGeneralMetrics>())),
-        Bind<IGetUserGeneralMetrics>(
-            (i) => GetUserGeneralMetrics(i<IHomeRepository>())),
-        Bind<IHomeRepository>(
-            (i) => HomeRepository(i<IGetGeneralMetricsFirestore>())),
-        Bind<IGetGeneralMetricsFirestore>(
-            (i) => GetGereneralMetricsFirestore()),
+        $HomeController,
+        $GetUserGeneralMetrics,
+        $HomeRepository,
+        $GetGereneralMetricsFirestore
+        //Bind((i) => HomeController(i<IGetUserGeneralMetrics>())),
+        //Bind<IGetUserGeneralMetrics>(
+        //  (i) => GetUserGeneralMetrics(i<IHomeRepository>())),
+        //Bind<IHomeRepository>(
+        //    (i) => HomeRepository(i<IGetGeneralMetricsFirestore>())),
+        //Bind<IGetGeneralMetricsFirestore>(
+        //   (i) => GetGereneralMetricsFirestore()),
       ];
 
   @override
