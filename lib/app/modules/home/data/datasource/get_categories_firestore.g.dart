@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_repository.dart';
+part of 'get_categories_firestore.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $HomeRepository = BindInject(
-  (i) => HomeRepository(
-      i<IGetGeneralMetricsFirestore>(), i<IGetCategoriesFirestore>()),
+final $GetCategoriesFirestore = BindInject(
+  (i) => GetCategoriesFirestore(),
   singleton: true,
   lazy: true,
 );

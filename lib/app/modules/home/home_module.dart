@@ -1,7 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'data/datasource/get_categories_firestore.dart';
 import 'data/datasource/get_general_metrics.dart';
 import 'data/repositories/home_repository.dart';
+import 'domain/usecases/get_categories.dart';
 import 'domain/usecases/get_user_general_metrics.dart';
 import 'ui/controllers/home_controller.dart';
 import 'ui/pages/home_page.dart';
@@ -11,8 +13,10 @@ class HomeModule extends ChildModule {
   List<Bind> get binds => [
         $HomeController,
         $GetUserGeneralMetrics,
+        $GetCategories,
         $HomeRepository,
-        $GetGereneralMetricsFirestore
+        $GetGereneralMetricsFirestore,
+        $GetCategoriesFirestore
         //Bind((i) => HomeController(i<IGetUserGeneralMetrics>())),
         //Bind<IGetUserGeneralMetrics>(
         //  (i) => GetUserGeneralMetrics(i<IHomeRepository>())),
