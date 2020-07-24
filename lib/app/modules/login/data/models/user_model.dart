@@ -12,6 +12,7 @@ class UserModel extends UserEntity {
   }) : super(
           userId: userId,
           userName: userName,
+          userEmail: userEmail,
           userPhoto: userPhoto,
         );
 

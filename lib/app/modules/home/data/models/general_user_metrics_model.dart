@@ -12,8 +12,8 @@ class GeneralUserMetricsModel extends GeneralUserMetricsEntity {
 
   factory GeneralUserMetricsModel.fromDocument(DocumentSnapshot doc) {
     return GeneralUserMetricsModel(
-      correctAnwers: doc.data['correctanwers'],
-      incorrectAnwers: doc.data['incorrectanwers'],
+      correctAnwers: doc.data['userMetrics']['correctanwers'],
+      incorrectAnwers: doc.data['userMetrics']['incorrectanwers'],
     );
   }
 }

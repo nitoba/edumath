@@ -12,7 +12,17 @@ class AddUserOnFireStore implements IAddUserOnFirestore {
   Future<void> addUserOnFirestore(UserModel user) async {
     final isMatch = await _checkUserExistOnDatabase(user);
     if (isMatch) return;
-    await instance.collection("users").add(user.toJson());
+
+    await instance.collection("users").add({
+      "userMetrics": {
+        "correctanwers": 0,
+        "incorrectanwers": 0,
+      },
+      'userId': user.userId,
+      'userName': user.userName,
+      'userEmail': user.userEmail,
+      'userPhoto': user.userPhoto,
+    });
   }
 
   Future<bool> _checkUserExistOnDatabase(UserModel user) async {

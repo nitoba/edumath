@@ -11,7 +11,7 @@ class GetGereneralMetricsFirestore implements IGetGeneralMetricsFirestore {
     List<DocumentSnapshot> metrics = [];
     final user = await instance
         .collection("users")
-        .where('userid', isEqualTo: userId)
+        .where('userId', isEqualTo: userId)
         .getDocuments();
 
     if (user.documents.isNotEmpty) {

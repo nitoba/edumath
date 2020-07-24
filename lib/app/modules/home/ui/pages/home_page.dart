@@ -20,6 +20,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
 
   @override
+  void initState() {
+    controller.getUserMetrics(widget.user.userId);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
@@ -31,10 +37,14 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             children: [
               HeaderWidget(
                 user: widget.user,
-                onTap: () {},
+                onTap: () {
+                  controller.logout();
+                },
               ),
               SizedBox(height: 55),
-              GeneralUserMetricsWidget(),
+              GeneralUserMetricsWidget(
+                homeController: controller,
+              ),
               SizedBox(height: 70),
               Text(
                 "Seleção de categorias",
