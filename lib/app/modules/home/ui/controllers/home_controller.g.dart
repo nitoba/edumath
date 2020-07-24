@@ -7,7 +7,7 @@ part of 'home_controller.dart';
 // **************************************************************************
 
 final $HomeController = BindInject(
-  (i) => HomeController(i<IGetUserGeneralMetrics>()),
+  (i) => HomeController(i<IGetUserGeneralMetrics>(), i<IGetCategories>()),
   singleton: true,
   lazy: true,
 );
@@ -36,6 +36,21 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$categoriesAtom = Atom(name: '_HomeControllerBase.categories');
+
+  @override
+  List<CategoriesEntity> get categories {
+    _$categoriesAtom.reportRead();
+    return super.categories;
+  }
+
+  @override
+  set categories(List<CategoriesEntity> value) {
+    _$categoriesAtom.reportWrite(value, super.categories, () {
+      super.categories = value;
+    });
+  }
+
   final _$getUserMetricsAsyncAction =
       AsyncAction('_HomeControllerBase.getUserMetrics');
 
@@ -44,10 +59,19 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$getUserMetricsAsyncAction.run(() => super.getUserMetrics(userId));
   }
 
+  final _$getAllCagetoriesAsyncAction =
+      AsyncAction('_HomeControllerBase.getAllCagetories');
+
+  @override
+  Future getAllCagetories() {
+    return _$getAllCagetoriesAsyncAction.run(() => super.getAllCagetories());
+  }
+
   @override
   String toString() {
     return '''
-generalUserMetricsEntity: ${generalUserMetricsEntity}
+generalUserMetricsEntity: ${generalUserMetricsEntity},
+categories: ${categories}
     ''';
   }
 }
