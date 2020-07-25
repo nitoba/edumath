@@ -7,7 +7,7 @@ part of 'get_general_metrics.dart';
 // **************************************************************************
 
 final $GetGereneralMetricsFirestore = BindInject(
-  (i) => GetGereneralMetricsFirestore(),
+  (i) => GetGereneralMetricsFirestore(i<Firestore>()),
   singleton: true,
   lazy: true,
 );

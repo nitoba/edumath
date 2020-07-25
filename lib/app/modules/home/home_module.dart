@@ -17,6 +17,7 @@ class HomeModule extends ChildModule {
         $HomeRepository,
         $GetGereneralMetricsFirestore,
         $GetCategoriesFirestore
+
         //Bind((i) => HomeController(i<IGetUserGeneralMetrics>())),
         //Bind<IGetUserGeneralMetrics>(
         //  (i) => GetUserGeneralMetrics(i<IHomeRepository>())),

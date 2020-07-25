@@ -21,8 +21,27 @@ class HomeRepository implements IHomeRepository {
     final userMetrics =
         await generalMetricsFirestore.getGeneralMetricsOfUser(userId);
 
-    if (userMetrics.isNotEmpty)
-      return GeneralUserMetricsModel.fromDocument(userMetrics.first);
+    if (userMetrics.isNotEmpty) {
+      Map<String, dynamic> metrics;
+      var correctsum = 0;
+      var incorrectsum = 0;
+
+      (userMetrics.first.data['userMetrics']['correctanwers'] as Map)
+          .forEach((key, value) {
+        correctsum = correctsum + value;
+      });
+
+      (userMetrics.first.data['userMetrics']['incorrectanwers'] as Map)
+          .forEach((key, value) {
+        incorrectsum = incorrectsum + value;
+      });
+
+      metrics = {
+        'correctanwers': correctsum,
+        'incorrectanwers': incorrectsum,
+      };
+      return GeneralUserMetricsModel.fromJson(metrics);
+    }
 
     return GeneralUserMetricsModel(correctAnwers: null, incorrectAnwers: null);
   }

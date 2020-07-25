@@ -10,10 +10,10 @@ class GeneralUserMetricsModel extends GeneralUserMetricsEntity {
           incorrectAnwers: incorrectAnwers,
         );
 
-  factory GeneralUserMetricsModel.fromDocument(DocumentSnapshot doc) {
+  factory GeneralUserMetricsModel.fromJson(Map<String, dynamic> json) {
     return GeneralUserMetricsModel(
-      correctAnwers: doc.data['userMetrics']['correctanwers'],
-      incorrectAnwers: doc.data['userMetrics']['incorrectanwers'],
+      correctAnwers: json['correctanwers'],
+      incorrectAnwers: json['incorrectanwers'],
     );
   }
 }

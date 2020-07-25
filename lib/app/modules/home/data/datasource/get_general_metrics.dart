@@ -9,7 +9,9 @@ abstract class IGetGeneralMetricsFirestore {
 
 @Injectable()
 class GetGereneralMetricsFirestore implements IGetGeneralMetricsFirestore {
-  final Firestore instance = Firestore.instance;
+  final Firestore instance;
+
+  GetGereneralMetricsFirestore(this.instance);
   @override
   Future<List<DocumentSnapshot>> getGeneralMetricsOfUser(String userId) async {
     List<DocumentSnapshot> metrics = [];

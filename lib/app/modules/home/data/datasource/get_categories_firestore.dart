@@ -11,7 +11,9 @@ abstract class IGetCategoriesFirestore {
 
 @Injectable()
 class GetCategoriesFirestore implements IGetCategoriesFirestore {
-  final Firestore instance = Firestore.instance;
+  final Firestore instance;
+
+  GetCategoriesFirestore(this.instance);
   @override
   Future<List<CategoriesModel>> getCategories() async {
     final categories = await instance.collection('questions').getDocuments();

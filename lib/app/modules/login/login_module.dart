@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import '../../app_module.dart';
 import 'data/datasource/add_user_on_firestore.dart';
 import 'data/datasource/google_login_firebase.dart';
 import 'data/repositories/add_user_repository.dart';
@@ -28,7 +30,8 @@ class LoginModule extends ChildModule {
             (i) => AddUserOnDatabaseRepository(i<IAddUserOnFirestore>())),
         // class that provide the data | datasource
         Bind<ILoginWithFirebase>((i) => LoginWithFirebase()),
-        Bind<IAddUserOnFirestore>((i) => AddUserOnFireStore()),
+        Bind<IAddUserOnFirestore>((i) => AddUserOnFireStore(i<Firestore>())),
+        Bind<Firestore>((i) => AppModule.to.get<Firestore>()),
       ];
 
   @override

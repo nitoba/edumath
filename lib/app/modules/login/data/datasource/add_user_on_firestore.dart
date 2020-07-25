@@ -7,7 +7,9 @@ abstract class IAddUserOnFirestore {
 }
 
 class AddUserOnFireStore implements IAddUserOnFirestore {
-  final Firestore instance = Firestore.instance;
+  final Firestore instance;
+
+  AddUserOnFireStore(this.instance);
   @override
   Future<void> addUserOnFirestore(UserModel user) async {
     final isMatch = await _checkUserExistOnDatabase(user);
@@ -15,8 +17,8 @@ class AddUserOnFireStore implements IAddUserOnFirestore {
 
     await instance.collection("users").add({
       "userMetrics": {
-        "correctanwers": 0,
-        "incorrectanwers": 0,
+        "correctanwers": await _getCategories(),
+        "incorrectanwers": await _getCategories(),
       },
       'userId': user.userId,
       'userName': user.userName,
@@ -32,5 +34,16 @@ class AddUserOnFireStore implements IAddUserOnFirestore {
         .getDocuments();
     if (isMatch.documents.isNotEmpty) return true;
     return false;
+  }
+
+  _getCategories() async {
+    Map<String, dynamic> data = {};
+
+    final categories = await instance.collection('questions').getDocuments();
+
+    for (var categorie in categories.documents) {
+      data[categorie.data['title']] = 0;
+    }
+    return data;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edumath/app/modules/login/login_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,9 @@ import 'modules/profile/profile_module.dart';
 
 class AppModule extends MainModule {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind<Firestore>((i) => Firestore.instance),
+      ];
 
   @override
   List<Router> get routers => [

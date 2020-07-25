@@ -7,7 +7,7 @@ part of 'get_categories_firestore.dart';
 // **************************************************************************
 
 final $GetCategoriesFirestore = BindInject(
-  (i) => GetCategoriesFirestore(),
+  (i) => GetCategoriesFirestore(i<Firestore>()),
   singleton: true,
   lazy: true,
 );
