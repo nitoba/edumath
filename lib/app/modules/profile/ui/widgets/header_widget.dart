@@ -22,6 +22,7 @@ class SliverHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       floating: true,
+      pinned: true,
       expandedHeight: MediaQuery.of(context).size.height * 0.4,
       backgroundColor: frColor,
       elevation: 0,

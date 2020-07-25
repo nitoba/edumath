@@ -15,6 +15,7 @@ class GeneralUserMetricsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
       if (homeController.generalUserMetricsEntity != null) {
+        var generalMetrics = homeController.generalUserMetricsEntity;
         return Container(
           height: 80,
           width: double.infinity,
@@ -36,7 +37,9 @@ class GeneralUserMetricsWidget extends StatelessWidget {
                         Icon(Feather.check_circle, color: Colors.white),
                         SizedBox(width: 8),
                         Text(
-                          "${homeController.generalUserMetricsEntity.correctAnwers}",
+                          generalMetrics.correctAnwers >= 10
+                              ? "${generalMetrics.correctAnwers}"
+                              : "0${generalMetrics.correctAnwers}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -71,7 +74,9 @@ class GeneralUserMetricsWidget extends StatelessWidget {
                         Icon(Feather.x, color: Colors.white, size: 28),
                         SizedBox(width: 8),
                         Text(
-                          "${homeController.generalUserMetricsEntity.incorrectAnwers}",
+                          generalMetrics.incorrectAnwers >= 10
+                              ? "${generalMetrics.incorrectAnwers}"
+                              : "0${generalMetrics.incorrectAnwers}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,

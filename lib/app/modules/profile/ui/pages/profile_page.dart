@@ -1,11 +1,12 @@
-import 'package:edumath/app/modules/profile/ui/widgets/functionalities_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/constants.dart';
 import '../../../login/domain/entities/user_entity.dart';
 import '../controllers/profile_controller.dart';
+import '../widgets/functionalities_widget.dart';
 import '../widgets/header_widget.dart';
+import '../widgets/metrics_tile.dart';
 
 class ProfilePage extends StatefulWidget {
   final UserEntity user;
@@ -50,7 +51,23 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController>
                 physics: BouncingScrollPhysics(),
                 controller: tabController,
                 children: [
-                  Text("Métricas"),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 42,
+                    ),
+                    child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return MetricsTile(
+                          categorieName: "Trigonometria",
+                          correctanwers: 9,
+                          incorrectanwers: 5,
+                        );
+                      },
+                    ),
+                  ),
                   FunctionalitiesWidget(),
                 ],
               ),
