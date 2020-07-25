@@ -49,13 +49,16 @@ class HeaderWidget extends StatelessWidget {
         ),
         Spacer(),
         GestureDetector(
-          child: Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              image: DecorationImage(
-                image: NetworkImage(user.userPhoto),
+          child: Hero(
+            tag: user.userId,
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                image: DecorationImage(
+                  image: NetworkImage(user.userPhoto),
+                ),
               ),
             ),
           ),

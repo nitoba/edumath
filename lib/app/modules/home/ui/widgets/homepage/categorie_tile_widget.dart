@@ -6,10 +6,12 @@ import '../../../../../core/constants.dart';
 class CategorieTileWidget extends StatelessWidget {
   final String title;
   final Function onTap;
+  final String iconSvg;
   const CategorieTileWidget({
     Key key,
     @required this.title,
     @required this.onTap,
+    this.iconSvg,
   }) : super(key: key);
 
   @override

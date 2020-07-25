@@ -6,7 +6,7 @@ import 'data/repositories/home_repository.dart';
 import 'domain/usecases/get_categories.dart';
 import 'domain/usecases/get_user_general_metrics.dart';
 import 'ui/controllers/home_controller.dart';
-import 'ui/pages/home_page.dart';
+import 'ui/pages/homepage/home_page.dart';
 
 class HomeModule extends ChildModule {
   @override

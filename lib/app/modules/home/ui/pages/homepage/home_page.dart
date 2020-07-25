@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../core/constants.dart';
-import '../../../login/domain/entities/user_entity.dart';
-import '../controllers/home_controller.dart';
-import '../widgets/homepage/categorie_tile_widget.dart';
-import '../widgets/homepage/general_user_metrics_widget.dart';
-import '../widgets/homepage/header_widget.dart';
+import '../../../../../core/constants.dart';
+import '../../../../login/domain/entities/user_entity.dart';
+import '../../controllers/home_controller.dart';
+import '../../widgets/homepage/categorie_tile_widget.dart';
+import '../../widgets/homepage/general_user_metrics_widget.dart';
+import '../../widgets/homepage/header_widget.dart';
 
 class HomePage extends StatefulWidget {
   final UserEntity user;
@@ -40,7 +40,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               HeaderWidget(
                 user: widget.user,
                 onTap: () {
-                  controller.logout();
+                  Modular.to.pushNamed("/profile", arguments: widget.user);
                 },
               ),
               SizedBox(height: 55),

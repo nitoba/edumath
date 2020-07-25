@@ -1,7 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-
-import '../../../login/data/datasource/google_login_firebase.dart';
 import '../../domain/entities/categories_entity.dart';
 import '../../domain/entities/general_user_metrics_entity.dart';
 import '../../domain/usecases/get_categories.dart';
@@ -31,11 +29,5 @@ abstract class _HomeControllerBase with Store {
   @action
   getAllCagetories() async {
     categories = await getCategories();
-  }
-
-  logout() async {
-    final login = LoginWithFirebase();
-    await login.logout();
-    Modular.to.pushNamedAndRemoveUntil('/', (_) => false);
   }
 }
