@@ -7,7 +7,7 @@ part of 'profile_controller.dart';
 // **************************************************************************
 
 final $ProfileController = BindInject(
-  (i) => ProfileController(i<IGetUserMetrics>()),
+  (i) => ProfileController(i<IGetUserMetrics>(), i<ILogout>()),
   singleton: true,
   lazy: true,
 );

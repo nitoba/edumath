@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../domain/entities/general_user_metrics_entity.dart';
 import 'package:meta/meta.dart';
 
