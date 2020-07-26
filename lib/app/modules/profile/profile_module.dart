@@ -1,12 +1,18 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'data/datasources/get_user_metrics_firestore.dart';
+import 'data/repositories/profile_repository_imp.dart';
+import 'domain/usecases/get_user_metrics.dart';
 import 'ui/controllers/profile_controller.dart';
 import 'ui/pages/profile_page.dart';
 
 class ProfileModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => ProfileController()),
+        $ProfileController,
+        $GetUserMetrics,
+        $ProfileRepositoryImp,
+        $GetUserMetricsFirestore,
       ];
 
   @override

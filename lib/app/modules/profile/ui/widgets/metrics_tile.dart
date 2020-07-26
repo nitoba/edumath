@@ -1,18 +1,13 @@
+import 'package:edumath/app/modules/profile/domain/entities/user_metric_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/constants.dart';
 
 class MetricsTile extends StatelessWidget {
-  final String categorieName;
-  final int correctanwers;
-  final int incorrectanwers;
-  const MetricsTile({
-    Key key,
-    @required this.categorieName,
-    @required this.correctanwers,
-    @required this.incorrectanwers,
-  }) : super(key: key);
+  final UserMetricEntity userMetricEntity;
+  const MetricsTile({Key key, @required this.userMetricEntity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +30,7 @@ class MetricsTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  categorieName,
+                  userMetricEntity.categorieName,
                   style: TextStyle(
                     fontSize: 22,
                     color: Colors.white,
@@ -65,9 +60,9 @@ class MetricsTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    correctanwers >= 10
-                        ? correctanwers.toString()
-                        : "0$correctanwers",
+                    userMetricEntity.correctanwers >= 10
+                        ? userMetricEntity.correctanwers.toString()
+                        : "0${userMetricEntity.correctanwers}",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -97,9 +92,9 @@ class MetricsTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    incorrectanwers >= 10
-                        ? incorrectanwers.toString()
-                        : "0$incorrectanwers",
+                    userMetricEntity.incorrectanwers >= 10
+                        ? userMetricEntity.incorrectanwers.toString()
+                        : "0${userMetricEntity.incorrectanwers}",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

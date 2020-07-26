@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/constants.dart';
@@ -23,6 +24,7 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController>
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    controller.getUserMetricsMethod(widget.user.userId);
     super.initState();
   }
 
@@ -56,14 +58,25 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController>
                       horizontal: 16.0,
                       vertical: 42,
                     ),
-                    child: ListView.builder(
-                      physics: BouncingScrollPhysics(),
-                      itemCount: 6,
-                      itemBuilder: (context, index) {
-                        return MetricsTile(
-                          categorieName: "Trigonometria",
-                          correctanwers: 9,
-                          incorrectanwers: 5,
+                    child: Observer(
+                      builder: (_) {
+                        if (controller.userMetrics != null) {
+                          return ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            itemCount: 6,
+                            itemBuilder: (context, index) {
+                              return MetricsTile(
+                                userMetricEntity: controller.userMetrics[index],
+                              );
+                            },
+                          );
+                        }
+
+                        return Center(
+                          child: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
                         );
                       },
                     ),
