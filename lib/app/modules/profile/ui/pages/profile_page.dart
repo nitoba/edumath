@@ -46,9 +46,7 @@ class _ProfilePageState extends ModularState<ProfilePage, ProfileController>
               user: widget.user,
               tabController: tabController,
               goBack: () => Modular.to.pop(),
-              logout: () {
-                controller.handleLogout(context);
-              },
+              logout: () => controller.handleLogout(context),
             ),
             SliverFillRemaining(
               child: TabBarView(

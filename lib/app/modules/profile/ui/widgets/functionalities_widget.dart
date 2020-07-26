@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import 'tile_widget.dart';
@@ -24,7 +25,7 @@ class FunctionalitiesWidget extends StatelessWidget {
               ),
               TileWidget(
                 title: "Como funciona ?",
-                onTap: () {},
+                onTap: () => Modular.link.pushNamed('/howtowork'),
                 icon: Icon(Feather.layout, color: Colors.white),
               ),
             ],

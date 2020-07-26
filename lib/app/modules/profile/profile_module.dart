@@ -5,6 +5,7 @@ import 'data/repositories/profile_repository_imp.dart';
 import 'domain/usecases/get_user_metrics.dart';
 import 'domain/usecases/logout.dart';
 import 'ui/controllers/profile_controller.dart';
+import 'ui/pages/how_to_work_page.dart';
 import 'ui/pages/profile_page.dart';
 
 class ProfileModule extends ChildModule {
@@ -22,6 +23,11 @@ class ProfileModule extends ChildModule {
         Router(
           Modular.initialRoute,
           child: (_, args) => ProfilePage(user: args.data),
+          transition: TransitionType.rightToLeft,
+        ),
+        Router(
+          "/howtowork",
+          child: (_, args) => HowToWorkPage(),
           transition: TransitionType.rightToLeft,
         ),
       ];
