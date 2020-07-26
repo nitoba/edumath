@@ -20,22 +20,39 @@ class TimerWidget extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        Container(
-          alignment: Alignment.center,
-          height: 40,
-          width: 150,
-          decoration: BoxDecoration(
-            color: insaturationPurple,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Text(
-            "Tempo: 08:35",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
+        Stack(
+          children: [
+            Container(
+              height: 40,
+              width: 150,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.35),
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-          ),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              height: 40,
+              width: 100,
+              decoration: BoxDecoration(
+                color: frColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            Container(
+              height: 40,
+              width: 150,
+              alignment: Alignment.center,
+              child: Text(
+                "Tempo: 08:35",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
