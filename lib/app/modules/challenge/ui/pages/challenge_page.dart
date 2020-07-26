@@ -1,6 +1,14 @@
+import 'package:edumath/app/modules/challenge/ui/widgets/alternative_widget.dart';
+import 'package:edumath/app/modules/challenge/ui/widgets/board_question_widget.dart';
+import 'package:edumath/app/modules/challenge/ui/widgets/next_question_widget.dart';
+import 'package:edumath/app/modules/challenge/ui/widgets/progress_questions_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
+import '../../../../core/constants.dart';
 import '../controllers/challenge_controller.dart';
+import '../widgets/timer_widget.dart';
 
 class ChallengePage extends StatefulWidget {
   final String title;
@@ -17,11 +25,46 @@ class _ChallengePageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      backgroundColor: bgColor,
+      appBar: buildAppBar(goBack: () {}),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32.0),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          padding: const EdgeInsets.only(bottom: 32.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TimerWidget(),
+              SizedBox(height: 22),
+              ProgressQuestions(currentQuestion: 1),
+              SizedBox(height: 22),
+              BoardQuestion(),
+              SizedBox(height: 30),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                itemBuilder: (context, index) => AlternativeWidget(),
+              ),
+              SizedBox(height: 30),
+              BtnNextQuestion(
+                nextQuestion: () {},
+              ),
+            ],
+          ),
+        ),
       ),
-      body: Column(
-        children: <Widget>[],
+    );
+  }
+
+  AppBar buildAppBar({Function goBack}) {
+    return AppBar(
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: IconButton(
+        icon: Icon(Feather.arrow_left, color: Colors.white),
+        onPressed: goBack,
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'challenge_controller.g.dart';
@@ -11,5 +12,10 @@ abstract class _ChallengeControllerBase with Store {
   @action
   void increment() {
     value++;
+  }
+
+  goToChallenge() {
+    Future.delayed(Duration(seconds: 2),
+        () => Modular.link.pushReplacementNamed('/challengePage'));
   }
 }
