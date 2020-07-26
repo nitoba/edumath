@@ -1,16 +1,77 @@
-# edumath
+![](assets\images\splashscreen.png)
 
-A new Flutter project.
+# Quiz App - EduMath
 
-## Getting Started
+Projeto de um app quiz de matemática para estudos de implementação do Clean Architecture no Flutter
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Construção
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Tipografia/Fontes
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Poppins
+
+### Paleta de cores
+
+- incorrectColor (#F0F0F5)
+- correctColor (#22C73F)
+- BackgroundColorPurple (#6a2799)
+- foregroundColorPurple (#9d3be1)
+
+### Mockup base
+
+[EduMath - Design](https://www.figma.com/file/eF0LUOAPQO5dmVqw45Xxxo/EduMath?node-id=0%3A1)
+
+### Tecnologias a serem utilizadas
+
+- Injeção de dependências
+    - Modular
+- Gerência de estado
+    - Mobx
+    - SetState
+- Banco de dados
+    - No Sql - Firebase firestore
+- Dados locais
+    - SharedPreferences
+- Geração de arquivos CLI
+    - Slidy
+
+### CI/CD e Testes automatizados
+
+- [x]  Github Actions
+    - Pull request para as branches master e developer
+- Fazer testes locais
+- [x]  Seguir o Gitflow
+    - Branch master para versão estável
+    - Branch Developer para desenvolvimento
+    - Criar branch para cada feature
+        - Ex: "feature/login"
+    - Fazer Merge e excluir a branch quando concluída
+
+### Models / Entidades da Aplicação
+
+- User
+    - id
+    - name
+    - email
+    - photo url
+    - metrics
+- Questions
+    - categorie
+    - description
+    - anwers
+
+ 
+
+---
+
+### Funcionalidades da aplicação
+
+- [x]  Fazer login com google
+- [ ]  Fazer logout
+- [ ]  Selecionar categoria
+- [ ]  Responder os desafios
+- [ ]  Assistir vídeo de correções
+- [ ]  Ver métricas por categoria no perfil
+- [ ]  Baixar listar de questões

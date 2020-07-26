@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'home_controller.dart';
+import 'challenge_controller.dart';
 
-class HomePage extends StatefulWidget {
+class ChallengePage extends StatefulWidget {
   final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const ChallengePage({Key key, this.title = "Challenge"}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _ChallengePageState createState() => _ChallengePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeController> {
+class _ChallengePageState
+    extends ModularState<ChallengePage, ChallengeController> {
   //use 'controller' variable to access controller
 
   @override
