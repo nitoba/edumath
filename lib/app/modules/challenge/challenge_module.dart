@@ -1,6 +1,6 @@
-import 'challenge_controller.dart';
+import 'ui/controllers/challenge_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'challenge_page.dart';
+import 'ui/pages/challenge_page.dart';
 
 class ChallengeModule extends ChildModule {
   @override

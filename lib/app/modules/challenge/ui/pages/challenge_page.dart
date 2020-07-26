@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'challenge_controller.dart';
+import '../controllers/challenge_controller.dart';
 
 class ChallengePage extends StatefulWidget {
   final String title;
