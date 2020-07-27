@@ -45,7 +45,8 @@ class _ChallengePageState
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 4,
-                itemBuilder: (context, index) => AlternativeWidget(),
+                itemBuilder: (context, index) =>
+                    AlternativeWidget(isCorrect: null),
               ),
               SizedBox(height: 30),
               BtnNextQuestion(

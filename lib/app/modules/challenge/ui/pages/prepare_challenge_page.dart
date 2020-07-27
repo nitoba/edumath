@@ -1,16 +1,17 @@
 import 'package:edumath/app/core/constants.dart';
 import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
+import 'package:edumath/app/modules/home/domain/entities/categories_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PrepareChallengePage extends StatelessWidget {
-  final String title;
+  final CategoriesEntity categorie;
 
-  const PrepareChallengePage({Key key, this.title}) : super(key: key);
+  const PrepareChallengePage({Key key, this.categorie}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Modular.get<ChallengeController>().goToChallenge();
+    Modular.get<ChallengeController>().goToChallenge(categorie.id);
     return Scaffold(
       backgroundColor: bgColor,
       body: Padding(
@@ -25,7 +26,7 @@ class PrepareChallengePage extends StatelessWidget {
                 SvgPicture.asset("assets/images/pi.svg"),
                 SizedBox(height: 20),
                 Text(
-                  title,
+                  categorie.title,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 26,

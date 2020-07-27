@@ -72,7 +72,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         return CategorieTileWidget(
                           title: controller.categories[index].title,
                           onTap: () => Modular.to.pushNamed(
-                              '/challenge/${controller.categories[index].title}'),
+                            '/challenge',
+                            arguments: controller.categories[index],
+                          ),
                         );
                       },
                     );
