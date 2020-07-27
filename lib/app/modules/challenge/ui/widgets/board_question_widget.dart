@@ -23,7 +23,7 @@ class BoardQuestion extends StatelessWidget {
       child: Observer(builder: (_) {
         return Text(
           challengeController
-              .questions[challengeController.currectQuestion].title,
+              .questions[challengeController.currentQuestion].title,
           //overflow: TextOverflow.visible,
           style: TextStyle(color: Colors.white, fontSize: 14),
         );

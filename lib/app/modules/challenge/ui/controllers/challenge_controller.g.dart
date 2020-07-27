@@ -7,7 +7,7 @@ part of 'challenge_controller.dart';
 // **************************************************************************
 
 final $ChallengeController = BindInject(
-  (i) => ChallengeController(i<IGetQuestions>()),
+  (i) => ChallengeController(i<IGetQuestions>(), i<INextQuestion>()),
   singleton: true,
   lazy: true,
 );
@@ -19,19 +19,19 @@ final $ChallengeController = BindInject(
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ChallengeController on _ChallengeControllerBase, Store {
-  final _$currectQuestionAtom =
-      Atom(name: '_ChallengeControllerBase.currectQuestion');
+  final _$currentQuestionAtom =
+      Atom(name: '_ChallengeControllerBase.currentQuestion');
 
   @override
-  int get currectQuestion {
-    _$currectQuestionAtom.reportRead();
-    return super.currectQuestion;
+  int get currentQuestion {
+    _$currentQuestionAtom.reportRead();
+    return super.currentQuestion;
   }
 
   @override
-  set currectQuestion(int value) {
-    _$currectQuestionAtom.reportWrite(value, super.currectQuestion, () {
-      super.currectQuestion = value;
+  set currentQuestion(int value) {
+    _$currentQuestionAtom.reportWrite(value, super.currentQuestion, () {
+      super.currentQuestion = value;
     });
   }
 
@@ -76,7 +76,7 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
   @override
   String toString() {
     return '''
-currectQuestion: ${currectQuestion},
+currentQuestion: ${currentQuestion},
 questions: ${questions}
     ''';
   }

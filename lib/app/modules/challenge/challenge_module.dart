@@ -4,6 +4,7 @@ import 'data/datasource/get_questions_firestore.dart';
 
 import 'data/repositories/challenge_repository_impl.dart';
 import 'domain/usecases/get_questions.dart';
+import 'domain/usecases/next_question.dart';
 import 'ui/controllers/challenge_controller.dart';
 import 'ui/pages/challenge_page.dart';
 import 'ui/pages/prepare_challenge_page.dart';
@@ -13,6 +14,7 @@ class ChallengeModule extends ChildModule {
   List<Bind> get binds => [
         $ChallengeController,
         $GetQuestions,
+        $NextQuestion,
         $ChallengeRepositoryImpl,
         $GetQuestionsFirestore,
       ];

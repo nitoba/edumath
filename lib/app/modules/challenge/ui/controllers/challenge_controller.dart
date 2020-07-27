@@ -1,5 +1,6 @@
 import 'package:edumath/app/modules/challenge/domain/entities/question_entity.dart';
 import 'package:edumath/app/modules/challenge/domain/usecases/get_questions.dart';
+import 'package:edumath/app/modules/challenge/domain/usecases/next_question.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -10,10 +11,11 @@ class ChallengeController = _ChallengeControllerBase with _$ChallengeController;
 
 abstract class _ChallengeControllerBase with Store {
   final IGetQuestions getQuestions;
+  final INextQuestion nextQuestionUseCase;
 
-  _ChallengeControllerBase(this.getQuestions);
+  _ChallengeControllerBase(this.getQuestions, this.nextQuestionUseCase);
   @observable
-  int currectQuestion = 0;
+  int currentQuestion = 0;
 
   @observable
   ObservableList<QuestionEntity> questions;
@@ -28,6 +30,9 @@ abstract class _ChallengeControllerBase with Store {
 
   @action
   nextQuestion() {
-    if (currectQuestion < (questions.length - 1)) currectQuestion++;
+    currentQuestion = nextQuestionUseCase(
+      questionsLenght: questions.length,
+      currentQuestion: currentQuestion,
+    );
   }
 }

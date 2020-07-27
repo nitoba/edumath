@@ -40,7 +40,7 @@ class AlternativeWidget extends StatelessWidget {
               Observer(builder: (_) {
                 return Text(
                   challengeController
-                      .questions[challengeController.currectQuestion]
+                      .questions[challengeController.currentQuestion]
                       .anwers[index]['title'],
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 );
