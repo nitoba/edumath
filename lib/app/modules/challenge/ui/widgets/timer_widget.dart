@@ -1,10 +1,14 @@
+import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../../core/constants.dart';
 
 class TimerWidget extends StatelessWidget {
+  final ChallengeController controller;
   const TimerWidget({
     Key key,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -12,14 +16,16 @@ class TimerWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          "03 questões",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-          ),
-        ),
+        Observer(builder: (_) {
+          return Text(
+            "0${controller.questions.length} questões",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
+          );
+        }),
         Stack(
           children: [
             Container(

@@ -5,6 +5,7 @@ import 'data/datasource/get_questions_firestore.dart';
 import 'data/repositories/challenge_repository_impl.dart';
 import 'domain/usecases/get_questions.dart';
 import 'domain/usecases/next_question.dart';
+import 'domain/usecases/select_asnwers.dart';
 import 'ui/controllers/challenge_controller.dart';
 import 'ui/pages/challenge_page.dart';
 import 'ui/pages/prepare_challenge_page.dart';
@@ -15,6 +16,7 @@ class ChallengeModule extends ChildModule {
         $ChallengeController,
         $GetQuestions,
         $NextQuestion,
+        $SelectAsnwers,
         $ChallengeRepositoryImpl,
         $GetQuestionsFirestore,
       ];

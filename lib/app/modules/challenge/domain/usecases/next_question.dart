@@ -5,7 +5,7 @@ abstract class INextQuestion {
   int call({int questionsLenght, int currentQuestion});
 }
 
-@Injectable()
+@Injectable(singleton: false)
 class NextQuestion implements INextQuestion {
   @override
   int call({int questionsLenght, int currentQuestion}) {

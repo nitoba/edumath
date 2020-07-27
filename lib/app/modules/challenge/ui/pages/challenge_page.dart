@@ -36,9 +36,9 @@ class _ChallengePageState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TimerWidget(),
+              TimerWidget(controller: controller),
               SizedBox(height: 22),
-              ProgressQuestions(currentQuestion: 1),
+              ProgressQuestions(controller: controller),
               SizedBox(height: 22),
               BoardQuestion(challengeController: controller),
               SizedBox(height: 30),

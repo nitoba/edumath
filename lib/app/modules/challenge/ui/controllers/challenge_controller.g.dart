@@ -35,6 +35,22 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
     });
   }
 
+  final _$progressChallengeAtom =
+      Atom(name: '_ChallengeControllerBase.progressChallenge');
+
+  @override
+  double get progressChallenge {
+    _$progressChallengeAtom.reportRead();
+    return super.progressChallenge;
+  }
+
+  @override
+  set progressChallenge(double value) {
+    _$progressChallengeAtom.reportWrite(value, super.progressChallenge, () {
+      super.progressChallenge = value;
+    });
+  }
+
   final _$questionsAtom = Atom(name: '_ChallengeControllerBase.questions');
 
   @override
@@ -74,9 +90,21 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
   }
 
   @override
+  dynamic selectAnswer() {
+    final _$actionInfo = _$_ChallengeControllerBaseActionController.startAction(
+        name: '_ChallengeControllerBase.selectAnswer');
+    try {
+      return super.selectAnswer();
+    } finally {
+      _$_ChallengeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 currentQuestion: ${currentQuestion},
+progressChallenge: ${progressChallenge},
 questions: ${questions}
     ''';
   }

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'next_question.dart';
+part of 'select_asnwers.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $NextQuestion = BindInject(
-  (i) => NextQuestion(),
+final $SelectAsnwers = BindInject(
+  (i) => SelectAsnwers(),
   singleton: false,
   lazy: true,
 );

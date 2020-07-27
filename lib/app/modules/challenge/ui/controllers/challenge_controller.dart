@@ -18,6 +18,9 @@ abstract class _ChallengeControllerBase with Store {
   int currentQuestion = 0;
 
   @observable
+  double progressChallenge = 0;
+
+  @observable
   ObservableList<QuestionEntity> questions;
 
   @action
@@ -35,4 +38,7 @@ abstract class _ChallengeControllerBase with Store {
       currentQuestion: currentQuestion,
     );
   }
+
+  @action
+  selectAnswer() {}
 }
