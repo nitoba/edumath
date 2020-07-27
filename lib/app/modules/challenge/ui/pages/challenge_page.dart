@@ -3,6 +3,7 @@ import 'package:edumath/app/modules/challenge/ui/widgets/board_question_widget.d
 import 'package:edumath/app/modules/challenge/ui/widgets/next_question_widget.dart';
 import 'package:edumath/app/modules/challenge/ui/widgets/progress_questions_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -39,18 +40,24 @@ class _ChallengePageState
               SizedBox(height: 22),
               ProgressQuestions(currentQuestion: 1),
               SizedBox(height: 22),
-              BoardQuestion(),
+              BoardQuestion(challengeController: controller),
               SizedBox(height: 30),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 4,
-                itemBuilder: (context, index) =>
-                    AlternativeWidget(isCorrect: null),
-              ),
+              Observer(builder: (_) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 4,
+                  itemBuilder: (context, index) => AlternativeWidget(
+                    challengeController: controller,
+                    index: index,
+                  ),
+                );
+              }),
               SizedBox(height: 30),
               BtnNextQuestion(
-                nextQuestion: () {},
+                nextQuestion: () {
+                  controller.nextQuestion();
+                },
               ),
             ],
           ),

@@ -24,10 +24,10 @@ class GetQuestionsFirestore implements IGetQuestionsFirestore {
 
     final questions = result.documents.map((question) {
       List<Map<String, dynamic>> anwers = [];
-      anwers.add({'anwer1': question.data['anwer1']});
-      anwers.add({'anwer2': question.data['anwer2']});
-      anwers.add({'anwer3': question.data['anwer3']});
-      anwers.add({'correct': question.data['correct']});
+      anwers.add(question.data['anwer1']);
+      anwers.add(question.data['anwer2']);
+      anwers.add(question.data['anwer3']);
+      anwers.add(question.data['anwer4']);
       anwers.shuffle();
       return QuestionsModel.fromDocument(doc: question, anwers: anwers);
     }).toList();

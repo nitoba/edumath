@@ -1,9 +1,13 @@
 import 'package:edumath/app/core/constants.dart';
+import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class BoardQuestion extends StatelessWidget {
+  final ChallengeController challengeController;
   const BoardQuestion({
     Key key,
+    this.challengeController,
   }) : super(key: key);
 
   @override
@@ -16,11 +20,14 @@ class BoardQuestion extends StatelessWidget {
         color: frColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Text(
-        "Questãodasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdqwewdawdasdasdawdqweasdasdasdasasdasdasdasdasdasdasdasdasdasdasdqweqwdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdaqweqwdasdas",
-        //overflow: TextOverflow.visible,
-        style: TextStyle(color: Colors.white, fontSize: 14),
-      ),
+      child: Observer(builder: (_) {
+        return Text(
+          challengeController
+              .questions[challengeController.currectQuestion].title,
+          //overflow: TextOverflow.visible,
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        );
+      }),
     );
   }
 }
