@@ -27,7 +27,7 @@ abstract class _ChallengeControllerBase with Store {
   @observable
   String timer = '00:00';
 
-  bool _isCorrect = true;
+  bool _wasAnswered = false;
 
   @observable
   double progressTimer = 150;
@@ -48,7 +48,9 @@ abstract class _ChallengeControllerBase with Store {
 
   @action
   nextQuestion() {
-    if (currentQuestion == (questions.length - 1)) return;
+    if (nextQuestionUseCase.isOver(
+        questionsLenght: questions.length,
+        currentQuestion: currentQuestion)) return;
 
     if (progressTimer > 0 && currentIndex != null) {
       currentQuestion = nextQuestionUseCase(
@@ -56,20 +58,20 @@ abstract class _ChallengeControllerBase with Store {
         currentQuestion: currentQuestion,
       );
     }
-    _isCorrect = true;
+    _wasAnswered = false;
     currentIndex = null;
   }
 
   @action
   selectAnswer(int index) {
-    if (progressTimer > 0 && _isCorrect) {
-      _isCorrect = selectAsnwers(questions[currentQuestion].anwers[index]);
-      if (_isCorrect) {
+    if (progressTimer > 0 && !_wasAnswered) {
+      _wasAnswered = selectAsnwers(questions[currentQuestion].anwers[index]);
+      if (_wasAnswered) {
         currentIndex = index;
-        _isCorrect = false;
+        _wasAnswered = true;
       } else {
         currentIndex = 5;
-        _isCorrect = false;
+        _wasAnswered = true;
       }
     }
   }
