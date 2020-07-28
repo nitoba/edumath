@@ -71,7 +71,7 @@ Projeto de um app quiz de matemática para estudos de implementação do Clean A
 - [x]  Fazer login com google
 - [x]  Fazer logout
 - [x]  Carregar categorias
-- [ ]  Responder os desafios
+- [x]  Responder os desafios
 - [ ]  Assistir vídeo de correções
 - [x]  Ver métricas por categoria no perfil
 - [ ]  Baixar listar de questões
