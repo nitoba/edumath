@@ -70,7 +70,7 @@ abstract class _ChallengeControllerBase with Store {
         currentIndex = index;
         _wasAnswered = true;
       } else {
-        currentIndex = 5;
+        currentIndex = index;
         _wasAnswered = true;
       }
     }

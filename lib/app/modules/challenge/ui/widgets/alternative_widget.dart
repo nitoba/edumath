@@ -29,9 +29,11 @@ class AlternativeWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: challengeController.currentIndex == null
                 ? frColor
-                : index == challengeController.currentIndex
+                : index == challengeController.currentIndex &&
+                        asnwers['isRight']
                     ? correctColor
-                    : challengeController.currentIndex == 5
+                    : challengeController.currentIndex == index &&
+                            !asnwers['isRight']
                         ? incorrectColor
                         : frColor,
           ),
@@ -49,9 +51,11 @@ class AlternativeWidget extends StatelessWidget {
                   asnwers['title'],
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                // if (isCorrect != null)
+                // if (challengeController.currentIndex != null)
                 //   Icon(
-                //     isCorrect ? Feather.check_square : Feather.x_circle,
+                //     index == challengeController.currentIndex
+                //         ? Feather.check_square
+                //         : Feather.x_circle,
                 //     color: Colors.white,
                 //   ),
               ],
