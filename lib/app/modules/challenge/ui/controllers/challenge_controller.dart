@@ -40,14 +40,18 @@ abstract class _ChallengeControllerBase with Store {
 
   @action
   nextQuestion() {
-    currentQuestion = nextQuestionUseCase(
-      questionsLenght: questions.length,
-      currentQuestion: currentQuestion,
-    );
+    if (progressTimer > 0) {
+      currentQuestion = nextQuestionUseCase(
+        questionsLenght: questions.length,
+        currentQuestion: currentQuestion,
+      );
+    }
   }
 
   @action
-  selectAnswer() {}
+  selectAnswer() {
+    if (progressTimer > 0) {}
+  }
 
   @action
   countTimer({int timeToMinutes}) async {

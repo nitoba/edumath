@@ -25,7 +25,7 @@ class _ChallengePageState
 
   @override
   void initState() {
-    controller.countTimer(timeToMinutes: 5);
+    controller.countTimer(timeToMinutes: 10);
     super.initState();
   }
 

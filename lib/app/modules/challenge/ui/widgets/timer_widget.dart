@@ -42,7 +42,11 @@ class TimerWidget extends StatelessWidget {
                 height: 40,
                 width: controller.progressTimer,
                 decoration: BoxDecoration(
-                  color: frColor,
+                  color: controller.progressTimer > 75.0
+                      ? frColor
+                      : controller.progressTimer < 25.0
+                          ? Colors.red
+                          : Colors.yellow,
                   borderRadius: BorderRadius.circular(8),
                 ),
               );
