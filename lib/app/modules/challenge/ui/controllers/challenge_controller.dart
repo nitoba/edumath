@@ -89,7 +89,12 @@ abstract class _ChallengeControllerBase with Store {
       questionsLenght: questions.length,
       currentQuestion: currentQuestion,
       wasAnswered: _wasAnswered,
-    )) return;
+    )) {
+      Future.delayed(Duration(seconds: 1), () {
+        Modular.to.pushNamed('challenge/sucessPage');
+      });
+      return;
+    }
 
     if (timeToMinutes != null) {
       timeToSec = timeToMinutes * 60;

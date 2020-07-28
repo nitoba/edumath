@@ -1,3 +1,4 @@
+import 'package:edumath/app/modules/challenge/ui/pages/challenge_sucess_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'data/datasource/get_questions_firestore.dart';
@@ -28,6 +29,11 @@ class ChallengeModule extends ChildModule {
         Router(
           '/challengePage',
           child: (_, args) => ChallengePage(),
+          transition: TransitionType.rightToLeft,
+        ),
+        Router(
+          '/sucessPage',
+          child: (_, args) => SucessPage(),
           transition: TransitionType.rightToLeft,
         ),
       ];
