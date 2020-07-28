@@ -15,6 +15,8 @@ class GetQuestions implements IGetQuestions {
   GetQuestions(this.challengeRepository);
   @override
   Future<List<QuestionEntity>> call(String categorieId) async {
-    return await challengeRepository.getQuestions(categorieId);
+    var result = await challengeRepository.getQuestions(categorieId);
+    result.shuffle();
+    return result;
   }
 }

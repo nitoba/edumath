@@ -7,7 +7,8 @@ part of 'challenge_controller.dart';
 // **************************************************************************
 
 final $ChallengeController = BindInject(
-  (i) => ChallengeController(i<IGetQuestions>(), i<INextQuestion>()),
+  (i) => ChallengeController(
+      i<IGetQuestions>(), i<INextQuestion>(), i<ISelectAsnwers>()),
   singleton: true,
   lazy: true,
 );
@@ -81,6 +82,22 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
     });
   }
 
+  final _$currentIndexAtom =
+      Atom(name: '_ChallengeControllerBase.currentIndex');
+
+  @override
+  int get currentIndex {
+    _$currentIndexAtom.reportRead();
+    return super.currentIndex;
+  }
+
+  @override
+  set currentIndex(int value) {
+    _$currentIndexAtom.reportWrite(value, super.currentIndex, () {
+      super.currentIndex = value;
+    });
+  }
+
   final _$goToChallengeAsyncAction =
       AsyncAction('_ChallengeControllerBase.goToChallenge');
 
@@ -114,11 +131,11 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
   }
 
   @override
-  dynamic selectAnswer() {
+  dynamic selectAnswer(int index) {
     final _$actionInfo = _$_ChallengeControllerBaseActionController.startAction(
         name: '_ChallengeControllerBase.selectAnswer');
     try {
-      return super.selectAnswer();
+      return super.selectAnswer(index);
     } finally {
       _$_ChallengeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -130,7 +147,8 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
 currentQuestion: ${currentQuestion},
 questions: ${questions},
 timer: ${timer},
-progressTimer: ${progressTimer}
+progressTimer: ${progressTimer},
+currentIndex: ${currentIndex}
     ''';
   }
 }

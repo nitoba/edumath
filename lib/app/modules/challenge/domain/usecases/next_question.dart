@@ -10,6 +10,7 @@ class NextQuestion implements INextQuestion {
   @override
   int call({int questionsLenght, int currentQuestion}) {
     if (currentQuestion < (questionsLenght - 1)) currentQuestion++;
+
     return currentQuestion;
   }
 }

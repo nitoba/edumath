@@ -2,6 +2,7 @@ import 'package:edumath/app/modules/challenge/domain/entities/question_entity.da
 
 import 'package:edumath/app/modules/challenge/domain/usecases/get_questions.dart';
 import 'package:edumath/app/modules/challenge/domain/usecases/next_question.dart';
+import 'package:edumath/app/modules/challenge/domain/usecases/select_asnwers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,8 +14,10 @@ class ChallengeController = _ChallengeControllerBase with _$ChallengeController;
 abstract class _ChallengeControllerBase with Store {
   final IGetQuestions getQuestions;
   final INextQuestion nextQuestionUseCase;
+  final ISelectAsnwers selectAsnwers;
 
-  _ChallengeControllerBase(this.getQuestions, this.nextQuestionUseCase);
+  _ChallengeControllerBase(
+      this.getQuestions, this.nextQuestionUseCase, this.selectAsnwers);
   @observable
   int currentQuestion = 0;
 
@@ -24,8 +27,13 @@ abstract class _ChallengeControllerBase with Store {
   @observable
   String timer = '00:00';
 
+  bool _isCorrect = true;
+
   @observable
   double progressTimer = 150;
+
+  @observable
+  int currentIndex;
 
   int _minutes = 0;
   int _seconds = 0;
@@ -40,17 +48,30 @@ abstract class _ChallengeControllerBase with Store {
 
   @action
   nextQuestion() {
-    if (progressTimer > 0) {
+    if (currentQuestion == (questions.length - 1)) return;
+
+    if (progressTimer > 0 && currentIndex != null) {
       currentQuestion = nextQuestionUseCase(
         questionsLenght: questions.length,
         currentQuestion: currentQuestion,
       );
     }
+    _isCorrect = true;
+    currentIndex = null;
   }
 
   @action
-  selectAnswer() {
-    if (progressTimer > 0) {}
+  selectAnswer(int index) {
+    if (progressTimer > 0 && _isCorrect) {
+      _isCorrect = selectAsnwers(questions[currentQuestion].anwers[index]);
+      if (_isCorrect) {
+        currentIndex = index;
+        _isCorrect = false;
+      } else {
+        currentIndex = 5;
+        _isCorrect = false;
+      }
+    }
   }
 
   @action
