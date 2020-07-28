@@ -16,21 +16,23 @@ void main() {
     getUserLogged = GetUserLogged(repository);
   });
 
-  test('should be return an user if he already logged', () async {
-    when(repository.getUserLogged()).thenAnswer((_) async => Right(user));
+  group("Use Case get if user is logged", () {
+    test('should be return an user if he already logged', () async {
+      when(repository.getUserLogged()).thenAnswer((_) async => Right(user));
 
-    final result = await getUserLogged();
+      final result = await getUserLogged();
 
-    expect(result, Right(user));
-    verify(repository.getUserLogged());
-  });
+      expect(result, Right(user));
+      verify(repository.getUserLogged());
+    });
 
-  test('should be return null if user is not logged', () async {
-    when(repository.getUserLogged()).thenAnswer((_) async => Left(false));
+    test('should be return null if user is not logged', () async {
+      when(repository.getUserLogged()).thenAnswer((_) async => Left(false));
 
-    final result = await getUserLogged();
+      final result = await getUserLogged();
 
-    expect(result, Left(false));
-    verify(repository.getUserLogged());
+      expect(result, Left(false));
+      verify(repository.getUserLogged());
+    });
   });
 }

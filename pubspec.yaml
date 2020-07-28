@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  cloud_firestore_mocks: ^0.4.5
+  cloud_firestore: ^0.13.7
   equatable: ^1.2.2
   
   dio: ^3.0.9
