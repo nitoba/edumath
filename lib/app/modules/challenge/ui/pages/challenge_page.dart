@@ -48,34 +48,6 @@ class _ChallengePageState
               SizedBox(height: 22),
               BoardQuestion(challengeController: controller),
               SizedBox(height: 30),
-              // AlternativeWidget(
-              //   index: 0,
-              //   challengeController: controller,
-              //   onPressed: () {
-              //     controller.selectAnswer(0);
-              //   },
-              // ),
-              // AlternativeWidget(
-              //   index: 1,
-              //   challengeController: controller,
-              //   onPressed: () {
-              //     controller.selectAnswer(1);
-              //   },
-              // ),
-              // AlternativeWidget(
-              //   index: 2,
-              //   challengeController: controller,
-              //   onPressed: () {
-              //     controller.selectAnswer(2);
-              //   },
-              // ),
-              // AlternativeWidget(
-              //   index: 3,
-              //   challengeController: controller,
-              //   onPressed: () {
-              //     controller.selectAnswer(3);
-              //   },
-              // ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -89,7 +61,6 @@ class _ChallengePageState
                       },
                     );
                   }),
-
               SizedBox(height: 30),
               BtnNextQuestion(
                 nextQuestion: () {

@@ -51,13 +51,17 @@ class AlternativeWidget extends StatelessWidget {
                   asnwers['title'],
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                // if (challengeController.currentIndex != null)
-                //   Icon(
-                //     index == challengeController.currentIndex
-                //         ? Feather.check_square
-                //         : Feather.x_circle,
-                //     color: Colors.white,
-                //   ),
+                if (challengeController.currentIndex != null)
+                  Icon(
+                    index == challengeController.currentIndex &&
+                            asnwers['isRight']
+                        ? Feather.check_square
+                        : challengeController.currentIndex == index &&
+                                !asnwers['isRight']
+                            ? Feather.x_circle
+                            : null,
+                    color: Colors.white,
+                  ),
               ],
             ),
             onPressed: onPressed,
