@@ -9,15 +9,11 @@ abstract class ISelectAsnwers {
 
 @Injectable(singleton: false)
 class SelectAsnwers implements ISelectAsnwers {
-  int _scoreCorrect = 0;
-  int _scoreIncorrect = 0;
   @override
   bool call(Map<String, dynamic> isRigth) {
     if (isRigth['isRight']) {
-      _scoreCorrect++;
       return true;
     } else {
-      _scoreIncorrect++;
       return false;
     }
   }

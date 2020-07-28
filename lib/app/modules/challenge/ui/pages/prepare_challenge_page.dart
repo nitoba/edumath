@@ -7,11 +7,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class PrepareChallengePage extends StatelessWidget {
   final CategoriesEntity categorie;
+  final String userId;
 
-  const PrepareChallengePage({Key key, this.categorie}) : super(key: key);
+  const PrepareChallengePage({Key key, this.categorie, this.userId})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Modular.get<ChallengeController>().goToChallenge(categorie.id);
+    Modular.get<ChallengeController>().goToChallenge(categorie, userId);
     return Scaffold(
       backgroundColor: bgColor,
       body: Padding(

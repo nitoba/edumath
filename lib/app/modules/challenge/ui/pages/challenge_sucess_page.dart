@@ -1,6 +1,5 @@
 import 'package:edumath/app/core/constants.dart';
 import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
-import 'package:edumath/app/modules/home/domain/entities/categories_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:lottie/lottie.dart';

@@ -1,8 +1,11 @@
 import 'package:edumath/app/modules/challenge/domain/entities/question_entity.dart';
+import 'package:edumath/app/modules/challenge/domain/entities/score_entity.dart';
 
 import 'package:edumath/app/modules/challenge/domain/usecases/get_questions.dart';
 import 'package:edumath/app/modules/challenge/domain/usecases/next_question.dart';
+import 'package:edumath/app/modules/challenge/domain/usecases/save_user_score.dart';
 import 'package:edumath/app/modules/challenge/domain/usecases/select_asnwers.dart';
+import 'package:edumath/app/modules/home/domain/entities/categories_entity.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -15,9 +18,10 @@ abstract class _ChallengeControllerBase with Store {
   final IGetQuestions getQuestions;
   final INextQuestion nextQuestionUseCase;
   final ISelectAsnwers selectAsnwers;
+  final ISaveUserScore saveUserScore;
 
-  _ChallengeControllerBase(
-      this.getQuestions, this.nextQuestionUseCase, this.selectAsnwers);
+  _ChallengeControllerBase(this.getQuestions, this.nextQuestionUseCase,
+      this.selectAsnwers, this.saveUserScore);
   @observable
   int currentQuestion = 0;
 
@@ -37,12 +41,18 @@ abstract class _ChallengeControllerBase with Store {
 
   int _minutes = 0;
   int _seconds = 0;
+  int _scoreCorrect = 0;
+  int _scoreIncorrect = 0;
+
+  String _userId = '';
+  String _categorieName = '';
 
   @action
-  goToChallenge(String categorieiD) async {
+  goToChallenge(CategoriesEntity categorie, String userId) async {
     questions =
-        await getQuestions(categorieiD).then((value) => value.asObservable());
-
+        await getQuestions(categorie.id).then((value) => value.asObservable());
+    this._userId = userId;
+    this._categorieName = categorie.title;
     Modular.link.pushReplacementNamed('/challengePage');
   }
 
@@ -67,9 +77,11 @@ abstract class _ChallengeControllerBase with Store {
     if (progressTimer > 0 && !_wasAnswered) {
       _wasAnswered = selectAsnwers(questions[currentQuestion].anwers[index]);
       if (_wasAnswered) {
+        _scoreCorrect++;
         currentIndex = index;
         _wasAnswered = true;
       } else {
+        _scoreIncorrect++;
         currentIndex = index;
         _wasAnswered = true;
       }
@@ -82,7 +94,7 @@ abstract class _ChallengeControllerBase with Store {
     _clock(timeToMinutes: timeToMinutes, hate: hate);
   }
 
-  void _clock({int timeToMinutes, int timeSeconds, double hate}) {
+  Future<void> _clock({int timeToMinutes, int timeSeconds, double hate}) async {
     int timeToSec;
 
     if (selectAsnwers.isOver(
@@ -90,9 +102,9 @@ abstract class _ChallengeControllerBase with Store {
       currentQuestion: currentQuestion,
       wasAnswered: _wasAnswered,
     )) {
-      Future.delayed(Duration(seconds: 1), () {
-        Modular.to.pushNamed('challenge/sucessPage');
-      });
+      // Future.delayed(Duration(seconds: 1), () {
+      await _saveScore();
+      // });
       return;
     }
 
@@ -124,5 +136,15 @@ abstract class _ChallengeControllerBase with Store {
 
   double _calcTimerProgress(int timeToMinutes) {
     return (150 / (timeToMinutes * 60.0));
+  }
+
+  Future<void> _saveScore() async {
+    await saveUserScore(ScoreEntity(
+      userId: _userId,
+      categorieName: _categorieName,
+      correctScore: _scoreCorrect,
+      incorrectScore: _scoreIncorrect,
+    ));
+    Modular.to.pushReplacementNamed('challenge/sucessPage');
   }
 }

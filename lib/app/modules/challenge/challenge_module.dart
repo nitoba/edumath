@@ -3,9 +3,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'data/datasource/get_questions_firestore.dart';
 
+import 'data/datasource/save_user_metrics_firestore.dart';
 import 'data/repositories/challenge_repository_impl.dart';
 import 'domain/usecases/get_questions.dart';
 import 'domain/usecases/next_question.dart';
+import 'domain/usecases/save_user_score.dart';
 import 'domain/usecases/select_asnwers.dart';
 import 'ui/controllers/challenge_controller.dart';
 import 'ui/pages/challenge_page.dart';
@@ -18,14 +20,17 @@ class ChallengeModule extends ChildModule {
         $GetQuestions,
         $NextQuestion,
         $SelectAsnwers,
+        $SaveUserScore,
         $ChallengeRepositoryImpl,
         $GetQuestionsFirestore,
+        $SaveUserScoreFirestoreImpl,
       ];
 
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute,
-            child: (_, args) => PrepareChallengePage(categorie: args.data)),
+            child: (_, args) => PrepareChallengePage(
+                categorie: args.data[0], userId: args.data[1])),
         Router(
           '/challengePage',
           child: (_, args) => ChallengePage(),
