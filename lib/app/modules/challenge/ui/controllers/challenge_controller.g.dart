@@ -7,8 +7,8 @@ part of 'challenge_controller.dart';
 // **************************************************************************
 
 final $ChallengeController = BindInject(
-  (i) => ChallengeController(
-      i<IGetQuestions>(), i<INextQuestion>(), i<ISelectAsnwers>()),
+  (i) => ChallengeController(i<IGetQuestions>(), i<INextQuestion>(),
+      i<ISelectAsnwers>(), i<ISaveUserScore>()),
   singleton: true,
   lazy: true,
 );
@@ -102,9 +102,9 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
       AsyncAction('_ChallengeControllerBase.goToChallenge');
 
   @override
-  Future goToChallenge(String categorieiD) {
+  Future goToChallenge(CategoriesEntity categorie, String userId) {
     return _$goToChallengeAsyncAction
-        .run(() => super.goToChallenge(categorieiD));
+        .run(() => super.goToChallenge(categorie, userId));
   }
 
   final _$countTimerAsyncAction =

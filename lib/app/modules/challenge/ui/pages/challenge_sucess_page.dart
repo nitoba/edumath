@@ -1,19 +1,12 @@
 import 'package:edumath/app/core/constants.dart';
 import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
-import 'package:edumath/app/modules/home/domain/entities/categories_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:lottie/lottie.dart';
 
-class PrepareChallengePage extends StatelessWidget {
-  final CategoriesEntity categorie;
-  final String userId;
-
-  const PrepareChallengePage({Key key, this.categorie, this.userId})
-      : super(key: key);
+class SucessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Modular.get<ChallengeController>().goToChallenge(categorie, userId);
     return Scaffold(
       backgroundColor: bgColor,
       body: Padding(
@@ -25,32 +18,38 @@ class PrepareChallengePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/images/pi.svg"),
-                SizedBox(height: 20),
-                Text(
-                  categorie.title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                Icon(Feather.award, color: Colors.white, size: 80),
                 SizedBox(height: 30),
                 Text(
-                  "Preparando seu\ndesafio",
+                  "Parabéns",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Text(
+                    "Você cumpriu o desafio, não se preocupe se não acertou todas de primeira. O importante é sempre tentar",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 SizedBox(height: 40),
                 Center(
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  child: Lottie.asset(
+                    "assets/animation/sucess.json",
+                    height: 100,
+                    width: 100,
                   ),
-                )
+                ),
               ],
             ),
           ),

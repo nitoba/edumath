@@ -1,4 +1,4 @@
-![](assets\images\splashscreen.png)
+![](assets/images/splashscreen.png)
 
 # Quiz App - EduMath
 

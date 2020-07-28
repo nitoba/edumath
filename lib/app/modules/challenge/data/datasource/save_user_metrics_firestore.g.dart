@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'challenge_repository_impl.dart';
+part of 'save_user_metrics_firestore.dart';
 
 // **************************************************************************
 // InjectionGenerator
 // **************************************************************************
 
-final $ChallengeRepositoryImpl = BindInject(
-  (i) => ChallengeRepositoryImpl(
-      i<IGetQuestionsFirestore>(), i<ISaveUserScoreFirestore>()),
-  singleton: true,
+final $SaveUserScoreFirestoreImpl = BindInject(
+  (i) => SaveUserScoreFirestoreImpl(i<Firestore>()),
+  singleton: false,
   lazy: true,
 );

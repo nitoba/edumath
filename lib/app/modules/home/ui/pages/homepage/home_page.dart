@@ -73,7 +73,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                           title: controller.categories[index].title,
                           onTap: () => Modular.to.pushNamed(
                             '/challenge',
-                            arguments: controller.categories[index],
+                            arguments: [
+                              controller.categories[index],
+                              widget.user.userId
+                            ],
                           ),
                         );
                       },
