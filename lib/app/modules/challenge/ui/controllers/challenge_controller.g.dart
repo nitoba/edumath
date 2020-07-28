@@ -35,22 +35,6 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
     });
   }
 
-  final _$progressChallengeAtom =
-      Atom(name: '_ChallengeControllerBase.progressChallenge');
-
-  @override
-  double get progressChallenge {
-    _$progressChallengeAtom.reportRead();
-    return super.progressChallenge;
-  }
-
-  @override
-  set progressChallenge(double value) {
-    _$progressChallengeAtom.reportWrite(value, super.progressChallenge, () {
-      super.progressChallenge = value;
-    });
-  }
-
   final _$questionsAtom = Atom(name: '_ChallengeControllerBase.questions');
 
   @override
@@ -66,6 +50,37 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
     });
   }
 
+  final _$timerAtom = Atom(name: '_ChallengeControllerBase.timer');
+
+  @override
+  String get timer {
+    _$timerAtom.reportRead();
+    return super.timer;
+  }
+
+  @override
+  set timer(String value) {
+    _$timerAtom.reportWrite(value, super.timer, () {
+      super.timer = value;
+    });
+  }
+
+  final _$progressTimerAtom =
+      Atom(name: '_ChallengeControllerBase.progressTimer');
+
+  @override
+  double get progressTimer {
+    _$progressTimerAtom.reportRead();
+    return super.progressTimer;
+  }
+
+  @override
+  set progressTimer(double value) {
+    _$progressTimerAtom.reportWrite(value, super.progressTimer, () {
+      super.progressTimer = value;
+    });
+  }
+
   final _$goToChallengeAsyncAction =
       AsyncAction('_ChallengeControllerBase.goToChallenge');
 
@@ -73,6 +88,15 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
   Future goToChallenge(String categorieiD) {
     return _$goToChallengeAsyncAction
         .run(() => super.goToChallenge(categorieiD));
+  }
+
+  final _$countTimerAsyncAction =
+      AsyncAction('_ChallengeControllerBase.countTimer');
+
+  @override
+  Future countTimer({int timeToMinutes}) {
+    return _$countTimerAsyncAction
+        .run(() => super.countTimer(timeToMinutes: timeToMinutes));
   }
 
   final _$_ChallengeControllerBaseActionController =
@@ -104,8 +128,9 @@ mixin _$ChallengeController on _ChallengeControllerBase, Store {
   String toString() {
     return '''
 currentQuestion: ${currentQuestion},
-progressChallenge: ${progressChallenge},
-questions: ${questions}
+questions: ${questions},
+timer: ${timer},
+progressTimer: ${progressTimer}
     ''';
   }
 }

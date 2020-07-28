@@ -24,6 +24,12 @@ class _ChallengePageState
   //use 'controller' variable to access controller
 
   @override
+  void initState() {
+    controller.countTimer(timeToMinutes: 5);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,

@@ -36,28 +36,32 @@ class TimerWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            AnimatedContainer(
-              duration: Duration(milliseconds: 500),
-              height: 40,
-              width: 100,
-              decoration: BoxDecoration(
-                color: frColor,
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            Container(
-              height: 40,
-              width: 150,
-              alignment: Alignment.center,
-              child: Text(
-                "Tempo: 08:35",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
+            Observer(builder: (_) {
+              return AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                height: 40,
+                width: controller.progressTimer,
+                decoration: BoxDecoration(
+                  color: frColor,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-              ),
-            ),
+              );
+            }),
+            Observer(builder: (_) {
+              return Container(
+                height: 40,
+                width: 150,
+                alignment: Alignment.center,
+                child: Text(
+                  "Tempo: ${controller.timer}",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                  ),
+                ),
+              );
+            }),
           ],
         ),
       ],
