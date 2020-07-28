@@ -85,6 +85,12 @@ abstract class _ChallengeControllerBase with Store {
   void _clock({int timeToMinutes, int timeSeconds, double hate}) {
     int timeToSec;
 
+    if (selectAsnwers.isOver(
+      questionsLenght: questions.length,
+      currentQuestion: currentQuestion,
+      wasAnswered: _wasAnswered,
+    )) return;
+
     if (timeToMinutes != null) {
       timeToSec = timeToMinutes * 60;
       progressTimer = progressTimer - hate;
@@ -105,7 +111,8 @@ abstract class _ChallengeControllerBase with Store {
         timer =
             "${_minutes < 10 ? '0$_minutes' : '$_minutes'}:${_seconds < 10 ? '0$_seconds' : '$_seconds'}";
 
-        if (timeToSec > 0) _clock(timeSeconds: timeToSec, hate: hate);
+        if (timeToSec > 0 && progressTimer > 0)
+          _clock(timeSeconds: timeToSec, hate: hate);
       },
     );
   }

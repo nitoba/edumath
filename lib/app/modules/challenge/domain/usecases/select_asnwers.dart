@@ -4,6 +4,7 @@ part 'select_asnwers.g.dart';
 
 abstract class ISelectAsnwers {
   bool call(Map<String, dynamic> isRigth);
+  bool isOver({int questionsLenght, int currentQuestion, bool wasAnswered});
 }
 
 @Injectable(singleton: false)
@@ -15,5 +16,12 @@ class SelectAsnwers implements ISelectAsnwers {
     } else {
       return false;
     }
+  }
+
+  @override
+  bool isOver({int questionsLenght, int currentQuestion, bool wasAnswered}) {
+    return (currentQuestion == (questionsLenght - 1)) && wasAnswered
+        ? true
+        : false;
   }
 }
