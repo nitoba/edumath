@@ -1,7 +1,5 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:edumath/app/modules/resolutions/ui/controllers/resolutions_controller.dart';
 import 'package:edumath/app/modules/resolutions/resolutions_module.dart';
 
 void main() {

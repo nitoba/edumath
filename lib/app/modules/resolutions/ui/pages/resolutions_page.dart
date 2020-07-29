@@ -50,10 +50,10 @@ class _ResolutionsPageState
       player: YoutubePlayer(
         controller: _controller,
         showVideoProgressIndicator: true,
-        progressIndicatorColor: Colors.amber,
+        progressIndicatorColor: frColor,
         progressColors: ProgressBarColors(
-          playedColor: Colors.amber,
-          handleColor: Colors.amberAccent,
+          playedColor: frColor,
+          handleColor: insaturationPurple,
         ),
       ),
       builder: (BuildContext context, Widget player) => Scaffold(

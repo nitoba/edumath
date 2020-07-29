@@ -6,6 +6,5 @@ class VideoEntity extends Equatable {
   VideoEntity({this.videoId});
 
   @override
-  // TODO: implement props
   List<Object> get props => [videoId];
 }
