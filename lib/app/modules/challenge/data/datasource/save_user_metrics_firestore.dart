@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edumath/app/modules/challenge/data/models/score_model.dart';
-import 'package:edumath/app/modules/challenge/domain/entities/score_entity.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../domain/entities/score_entity.dart';
 
 part 'save_user_metrics_firestore.g.dart';
 

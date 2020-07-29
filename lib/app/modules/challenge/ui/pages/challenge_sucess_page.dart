@@ -1,6 +1,6 @@
 import 'package:edumath/app/core/constants.dart';
-import 'package:edumath/app/modules/challenge/ui/controllers/challenge_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:lottie/lottie.dart';
 
@@ -16,8 +16,8 @@ class SucessPage extends StatelessWidget {
               color: frColor, borderRadius: BorderRadius.circular(16)),
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Spacer(),
                 Icon(Feather.award, color: Colors.white, size: 80),
                 SizedBox(height: 30),
                 Text(
@@ -48,8 +48,27 @@ class SucessPage extends StatelessWidget {
                     "assets/animation/sucess.json",
                     height: 100,
                     width: 100,
+                    repeat: false,
                   ),
                 ),
+                Spacer(),
+                Container(
+                  height: 50,
+                  width: 200,
+                  child: MaterialButton(
+                    color: bgColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Text("Acessar correções",
+                        style: TextStyle(
+                          color: Colors.white,
+                        )),
+                    onPressed: () {
+                      Modular.to.pop();
+                    },
+                  ),
+                ),
+                SizedBox(height: 40),
               ],
             ),
           ),
