@@ -8,6 +8,7 @@ import 'package:edumath/app/app_widget.dart';
 
 import 'modules/home/home_module.dart';
 import 'modules/profile/profile_module.dart';
+import 'modules/resolutions/resolutions_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -22,6 +23,7 @@ class AppModule extends MainModule {
         Router("/home", module: HomeModule()),
         Router("/profile", module: ProfileModule()),
         Router("/challenge", module: ChallengeModule()),
+        Router("/resolutions", module: ResolutionsModule()),
       ];
 
   @override

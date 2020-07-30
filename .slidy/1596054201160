@@ -1,0 +1,5 @@
+lib/app/modules/resolutions/resolutions_module.dart
+lib/app/modules/resolutions/resolutions_page.dart
+test/app/modules/resolutions/resolutions_page_test.dart
+lib/app/modules/resolutions/resolutions_controller.dart
+test/app/modules/resolutions/resolutions_controller_test.dart

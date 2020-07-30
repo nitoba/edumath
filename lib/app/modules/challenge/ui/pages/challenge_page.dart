@@ -1,9 +1,9 @@
+import 'package:edumath/app/core/utils/dialogs.dart';
 import 'package:edumath/app/modules/challenge/ui/widgets/alternative_widget.dart';
 import 'package:edumath/app/modules/challenge/ui/widgets/board_question_widget.dart';
 import 'package:edumath/app/modules/challenge/ui/widgets/next_question_widget.dart';
 import 'package:edumath/app/modules/challenge/ui/widgets/progress_questions_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -25,15 +25,26 @@ class _ChallengePageState
 
   @override
   void initState() {
-    controller.countTimer(timeToMinutes: 10);
+    controller.countTimer(timeToMinutes: 1);
     super.initState();
+  }
+
+  @override
+  void deactivate() {
+    print("dispose");
+    super.deactivate();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      appBar: buildAppBar(goBack: () {}),
+      appBar: buildAppBar(
+          context: context,
+          goBack: () {
+            Navigator.of(context).pop();
+            Modular.to.pop();
+          }),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32.0),
         child: SingleChildScrollView(
@@ -73,15 +84,17 @@ class _ChallengePageState
       ),
     );
   }
+}
 
-  AppBar buildAppBar({Function goBack}) {
-    return AppBar(
-      elevation: 0,
-      automaticallyImplyLeading: false,
-      title: IconButton(
-        icon: Icon(Feather.arrow_left, color: Colors.white),
-        onPressed: goBack,
-      ),
-    );
-  }
+AppBar buildAppBar({Function goBack, context}) {
+  return AppBar(
+    elevation: 0,
+    automaticallyImplyLeading: false,
+    title: IconButton(
+      icon: Icon(Feather.arrow_left, color: Colors.white),
+      onPressed: () {
+        showOneDialog(context, section: "Sair do desafio", onPressed: goBack);
+      },
+    ),
+  );
 }

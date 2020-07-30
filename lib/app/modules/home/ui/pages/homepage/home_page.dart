@@ -60,26 +60,31 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               Expanded(
                 child: Observer(builder: (_) {
                   if (controller.categories != null) {
-                    return GridView.builder(
-                      physics: BouncingScrollPhysics(),
-                      itemCount: controller.categories.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 22,
-                        mainAxisSpacing: 20,
-                      ),
-                      itemBuilder: (contenxt, index) {
-                        return CategorieTileWidget(
-                          title: controller.categories[index].title,
-                          onTap: () => Modular.to.pushNamed(
-                            '/challenge',
-                            arguments: [
-                              controller.categories[index],
-                              widget.user.userId
-                            ],
-                          ),
-                        );
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        controller.getUserMetrics(widget.user.userId);
                       },
+                      child: GridView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: controller.categories.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 22,
+                          mainAxisSpacing: 20,
+                        ),
+                        itemBuilder: (contenxt, index) {
+                          return CategorieTileWidget(
+                            title: controller.categories[index].title,
+                            onTap: () => Modular.to.pushNamed(
+                              '/challenge',
+                              arguments: [
+                                controller.categories[index],
+                                widget.user.userId
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     );
                   }
                   return Center(

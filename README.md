@@ -49,21 +49,6 @@ Projeto de um app quiz de matemática para estudos de implementação do Clean A
         - Ex: "feature/login"
     - Fazer Merge e excluir a branch quando concluída
 
-### Models / Entidades da Aplicação
-
-- User
-    - id
-    - name
-    - email
-    - photo url
-    - metrics
-- Questions
-    - categorie
-    - description
-    - anwers
-
- 
-
 ---
 
 ### Funcionalidades da aplicação
@@ -72,6 +57,6 @@ Projeto de um app quiz de matemática para estudos de implementação do Clean A
 - [x]  Fazer logout
 - [x]  Carregar categorias
 - [x]  Responder os desafios
-- [ ]  Assistir vídeo de correções
+- [x]  Assistir vídeo de correções
 - [x]  Ver métricas por categoria no perfil
-- [ ]  Baixar listar de questões
+- [ ]  Baixar listar de questões como PDF
