@@ -2,6 +2,7 @@ import 'package:edumath/app/core/constants.dart';
 import 'package:edumath/app/modules/challenge/domain/entities/question_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:mobx/mobx.dart';
@@ -22,12 +23,12 @@ class ResolutionsPage extends StatefulWidget {
 class _ResolutionsPageState
     extends ModularState<ResolutionsPage, ResolutionsController> {
   //use 'controller' variable to access controller
-  YoutubePlayerController _controller;
+
   @override
   void initState() {
     controller.getVideosIds(widget.questions);
-    _controller = YoutubePlayerController(
-      initialVideoId: controller.videoQuestions[0].videoId,
+    controller.youtubeController = YoutubePlayerController(
+      initialVideoId: controller.getInitialVideo,
       flags: YoutubePlayerFlags(
         autoPlay: false,
       ),
@@ -37,7 +38,7 @@ class _ResolutionsPageState
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.youtubeController.dispose();
     super.dispose();
   }
 
@@ -48,7 +49,7 @@ class _ResolutionsPageState
         SystemChrome.setPreferredOrientations(DeviceOrientation.values);
       },
       player: YoutubePlayer(
-        controller: _controller,
+        controller: controller.youtubeController,
         showVideoProgressIndicator: true,
         progressIndicatorColor: frColor,
         progressColors: ProgressBarColors(
@@ -76,14 +77,16 @@ class _ResolutionsPageState
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Resolução\nQuestão 1",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    Observer(builder: (_) {
+                      return Text(
+                        "Resolução\nQuestão 0${controller.currectQuestionVideo}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      );
+                    }),
                     Icon(Feather.video, color: Colors.white, size: 80)
                   ],
                 ),
@@ -113,19 +116,21 @@ class _ResolutionsPageState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Próximo",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                      Observer(builder: (_) {
+                        return Text(
+                          '${controller.labelButtom}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        );
+                      }),
                       Icon(Feather.arrow_right_circle,
                           color: Colors.white, size: 30),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: controller.nextVideo,
                 ),
               )
             ],
