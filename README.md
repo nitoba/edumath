@@ -1,4 +1,4 @@
-![](assets\images\splashscreen.png)
+![](assets/images/splashscreen.png)
 
 # Quiz App - EduMath
 
@@ -49,29 +49,14 @@ Projeto de um app quiz de matemática para estudos de implementação do Clean A
         - Ex: "feature/login"
     - Fazer Merge e excluir a branch quando concluída
 
-### Models / Entidades da Aplicação
-
-- User
-    - id
-    - name
-    - email
-    - photo url
-    - metrics
-- Questions
-    - categorie
-    - description
-    - anwers
-
- 
-
 ---
 
 ### Funcionalidades da aplicação
 
 - [x]  Fazer login com google
-- [ ]  Fazer logout
-- [ ]  Selecionar categoria
-- [ ]  Responder os desafios
-- [ ]  Assistir vídeo de correções
-- [ ]  Ver métricas por categoria no perfil
-- [ ]  Baixar listar de questões
+- [x]  Fazer logout
+- [x]  Carregar categorias
+- [x]  Responder os desafios
+- [x]  Assistir vídeo de correções
+- [x]  Ver métricas por categoria no perfil
+- [ ]  Baixar listar de questões como PDF

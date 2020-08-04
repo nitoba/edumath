@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edumath/app/modules/challenge/challenge_module.dart';
 import 'package:edumath/app/modules/login/login_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -7,6 +8,7 @@ import 'package:edumath/app/app_widget.dart';
 
 import 'modules/home/home_module.dart';
 import 'modules/profile/profile_module.dart';
+import 'modules/resolutions/resolutions_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -20,6 +22,8 @@ class AppModule extends MainModule {
         Router(Modular.initialRoute, module: LoginModule()),
         Router("/home", module: HomeModule()),
         Router("/profile", module: ProfileModule()),
+        Router("/challenge", module: ChallengeModule()),
+        Router("/resolutions", module: ResolutionsModule()),
       ];
 
   @override
