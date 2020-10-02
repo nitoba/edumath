@@ -27,16 +27,16 @@ class ChallengeModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router(Modular.initialRoute,
+  List<ModularRouter> get routers => [
+        ModularRouter(Modular.initialRoute,
             child: (_, args) => PrepareChallengePage(
                 categorie: args.data[0], userId: args.data[1])),
-        Router(
+        ModularRouter(
           '/challengePage',
           child: (_, args) => ChallengePage(),
           transition: TransitionType.rightToLeft,
         ),
-        Router(
+        ModularRouter(
           '/sucessPage',
           child: (_, args) => SucessPage(),
           transition: TransitionType.rightToLeft,

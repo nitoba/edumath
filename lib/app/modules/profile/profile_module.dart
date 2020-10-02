@@ -19,13 +19,13 @@ class ProfileModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router(
+  List<ModularRouter> get routers => [
+        ModularRouter(
           Modular.initialRoute,
           child: (_, args) => ProfilePage(user: args.data),
           transition: TransitionType.rightToLeft,
         ),
-        Router(
+        ModularRouter(
           "/howtowork",
           child: (_, args) => HowToWorkPage(),
           transition: TransitionType.rightToLeft,
